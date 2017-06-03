@@ -9,10 +9,10 @@ if ( ! class_exists( 'WP_Customize_Control' ) ) {
  */
 class Category_Dropdown_Custom_Control extends WP_Customize_Control {
 
-	private $cats = false;
+	private $categories = false;
 
 	public function __construct( $manager, $id, $args = array(), $options = array() ) {
-		$this->cats = get_categories( $options );
+		$this->categories = get_categories( $options );
 
 		parent::__construct( $manager, $id, $args );
 	}
@@ -23,14 +23,14 @@ class Category_Dropdown_Custom_Control extends WP_Customize_Control {
 	 * @return HTML
 	 */
 	public function render_content() {
-		if ( ! empty( $this->cats ) ) {
+		if ( ! empty( $this->categories ) ) {
 			?>
 			<label>
 			  <span class="customize-category-select-control"><?php echo esc_html( $this->label ); ?></span>
 			  <select <?php $this->link(); ?>>
 					<?php
-					foreach ( $this->cats as $cat ) {
-						printf( '<option value="%s" %s>%s</option>', $cat->term_id, selected( $this->value(), $cat->term_id, false ), $cat->name );
+					foreach ( $this->categories as $category ) {
+						printf( '<option value="%s" %s>%s</option>', $category->term_id, selected( $this->value(), $category->term_id, false ), $category->name );
 					}
 						?>
 					  </select>
