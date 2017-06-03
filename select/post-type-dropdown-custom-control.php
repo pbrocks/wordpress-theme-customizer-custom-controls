@@ -7,13 +7,13 @@ if ( ! class_exists( 'WP_Customize_Control' ) ) {
  */
 class Post_Type_Dropdown_Custom_Control extends WP_Customize_Control {
 
-	private $postTypes = false;
+	private $post_types = false;
 
 	public function __construct( $manager, $id, $args = array(), $options = array() ) {
 		$postargs = wp_parse_args( $options, array(
 			'public' => true,
 		) );
-		$this->postTypes = get_post_types( $postargs, 'object' );
+		$this->post_types = get_post_types( $postargs, 'object' );
 
 		parent::__construct( $manager, $id, $args );
 	}
@@ -22,16 +22,16 @@ class Post_Type_Dropdown_Custom_Control extends WP_Customize_Control {
 	 * Render the content on the theme customizer page
 	 */
 	public function render_content() {
-		if ( empty( $this->postTypes ) ) {
+		if ( empty( $this->post_types ) ) {
 			return false;
 		}
 
 		?>
 			<label>
 				<span class="customize-post-type-dropdown"><?php echo esc_html( $this->label ); ?></span>
-				<select name="<?php echo $this->id; ?>" id="<?php echo $this->id; ?>">
+				<select name="<?php echo esc_html( $this->id ); ?>" id="<?php echo esc_html( $this->id ); ?>">
 				<?php
-				foreach ( $this->postTypes as $k => $post_type ) {
+				foreach ( $this->post_types as $k => $post_type ) {
 					printf( '<option value="%s" %s>%s</option>', $k, selected( $this->value(), $k, false ), $post_type->labels->name );
 				}
 				?>

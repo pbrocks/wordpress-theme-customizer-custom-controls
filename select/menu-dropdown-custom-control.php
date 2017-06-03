@@ -24,7 +24,7 @@ class Menu_Dropdown_Custom_Control extends WP_Customize_Control {
 			?>
 				<label>
 					<span class="customize-menu-dropdown"><?php echo esc_html( $this->label ); ?></span>
-					<select name="<?php echo $this->id; ?>" id="<?php echo $this->id; ?>">
+					<select name="<?php echo esc_html( $this->id ); ?>" id="<?php echo esc_html( $this->id ); ?>">
 					<?php
 					foreach ( $this->menus as $menu ) {
 						printf( '<option value="%s" %s>%s</option>', $menu->term_id, selected( $this->value(), $menu->term_id, false ), $menu->name );

@@ -12,28 +12,27 @@ class Layout_Picker_Custom_Control extends WP_Customize_Control {
 	   * Render the content on the theme customizer page
 	   */
 	public function render_content() {
-		$imageDirectory = '/wordpress-theme-customizer-custom-controls/layout/img/';
-		$imageDirectoryInc = '/inc/wordpress-theme-customizer-custom-controls/layout/img/';
+		$image_directory = '/wordpress-theme-customizer-custom-controls/layout/img/';
+		$image_directory_inc = '/inc/wordpress-theme-customizer-custom-controls/layout/img/';
 
-		$finalImageDirectory = '';
+		$final_image_directory = '';
 
-		if ( is_dir( get_stylesheet_directory() . $imageDirectory ) ) {
-			$finalImageDirectory = get_stylesheet_directory_uri() . $imageDirectory;
+		if ( is_dir( get_stylesheet_directory() . $image_directory ) ) {
+			$final_image_directory = get_stylesheet_directory_uri() . $image_directory;
 		}
 
-		if ( is_dir( get_stylesheet_directory() . $imageDirectoryInc ) ) {
-			$finalImageDirectory = get_stylesheet_directory_uri() . $imageDirectoryInc;
+		if ( is_dir( get_stylesheet_directory() . $image_directory_inc ) ) {
+			$final_image_directory = get_stylesheet_directory_uri() . $image_directory_inc;
 		}
 		?>
 			<label>
 			  <span class="customize-layout-control"><?php echo esc_html( $this->label ); ?></span>
 			  <ul>
-				<li><img src="<?php echo $finalImageDirectory; ?>1col.png" alt="Full Width" /><input type="radio" name="<?php echo $this->id; ?>" id="<?php echo $this->id; ?>[full_width]" value="1" /></li>
-				<li><img src="<?php echo $finalImageDirectory; ?>2cl.png" alt="Left Sidebar" /><input type="radio" name="<?php echo $this->id; ?>" id="<?php echo $this->id; ?>[left_sidebar]" value="1" /></li>
-				<li><img src="<?php echo $finalImageDirectory; ?>2cr.png" alt="Right Sidebar" /><input type="radio" name="<?php echo $this->id; ?>" id="<?php echo $this->id; ?>[right_sidebar]" value="1" /></li>
+				<li><img src="<?php echo esc_url( $final_image_directory ); ?>1col.png" alt="Full Width" /><input type="radio" name="<?php echo esc_html( $this->id ); ?>" id="<?php echo esc_html( $this->id ); ?>[full_width]" value="1" /></li>
+				<li><img src="<?php echo esc_url( $final_image_directory ); ?>2cl.png" alt="Left Sidebar" /><input type="radio" name="<?php echo esc_html( $this->id ); ?>" id="<?php echo esc_html( $this->id ); ?>[left_sidebar]" value="1" /></li>
+				<li><img src="<?php echo esc_url( $final_image_directory ); ?>2cr.png" alt="Right Sidebar" /><input type="radio" name="<?php echo esc_html( $this->id ); ?>" id="<?php echo esc_html( $this->id ); ?>[right_sidebar]" value="1" /></li>
 			  </ul>
 			</label>
 			<?php
 	}
 }
-?>

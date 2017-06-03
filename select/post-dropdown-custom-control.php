@@ -27,7 +27,7 @@ class Post_Dropdown_Custom_Control extends WP_Customize_Control {
 			?>
 				<label>
 					<span class="customize-post-dropdown"><?php echo esc_html( $this->label ); ?></span>
-					<select name="<?php echo $this->id; ?>" id="<?php echo $this->id; ?>">
+					<select name="<?php echo esc_html( $this->id ); ?>" id="<?php echo esc_html( $this->id ); ?>">
 					<?php
 					foreach ( $this->posts as $post ) {
 						printf( '<option value="%s" %s>%s</option>', $post->ID, selected( $this->value(), $post->ID, false ), $post->post_title );
