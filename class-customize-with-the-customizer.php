@@ -1,7 +1,7 @@
 <?php
-new Custom_Theme_Customizer();
+new Customize_with_the_Customizer();
 
-class Custom_Theme_Customizer {
+class Customize_with_the_Customizer {
 
 	public function __construct() {
 		add_action( 'admin_menu', array( &$this, 'customizer_admin' ) );

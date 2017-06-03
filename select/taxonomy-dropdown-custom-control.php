@@ -3,19 +3,19 @@
  * Customize for taxonomy with dropdown, extend the WP customizer
  */
 
-if ( ! class_exists( 'WP_Customize_Control' ) )
-	return NULL;
+if ( ! class_exists( 'WP_Customize_Control' ) ) {
+	return null;
+}
 
-class Taxonomy_Dropdown_Custom_Control extends WP_Customize_Control
-{
+class Taxonomy_Dropdown_Custom_Control extends WP_Customize_Control {
+
 	private $options = false;
 
-    public function __construct($manager, $id, $args = array(), $options = array())
-    {
-        $this->options = $options;
+	public function __construct( $manager, $id, $args = array(), $options = array() ) {
+		$this->options = $options;
 
-        parent::__construct( $manager, $id, $args );
-    }
+		parent::__construct( $manager, $id, $args );
+	}
 
 	/**
 	 * Render the control's content.
@@ -25,10 +25,9 @@ class Taxonomy_Dropdown_Custom_Control extends WP_Customize_Control
 	 * @since   11/14/2012
 	 * @return  void
 	 */
-	public function render_content()
-    {
-        // call wp_dropdown_cats to get data and add to select field
-        add_action( 'wp_dropdown_cats', array( $this, 'wp_dropdown_cats' ) );
+	public function render_content() {
+		// call wp_dropdown_cats to get data and add to select field
+		add_action( 'wp_dropdown_cats', array( $this, 'wp_dropdown_cats' ) );
 
 		// Set defaults
 		$this->defaults = array(
@@ -36,7 +35,7 @@ class Taxonomy_Dropdown_Custom_Control extends WP_Customize_Control
 			'orderby'          => 'name',
 			'hide_empty'       => 0,
 			'id'               => $this->id,
-			'selected'         => $this->value()
+			'selected'         => $this->value(),
 		);
 
 		// parse defaults and user data
@@ -53,17 +52,16 @@ class Taxonomy_Dropdown_Custom_Control extends WP_Customize_Control
 		<?php
 	}
 
-    /**
-     * Replace WP default dropdown
-     *
-     * @since   11/14/2012
-     * @return  String $output
-     */
-    public function wp_dropdown_cats( $output )
-    {
-        $output = str_replace( '<select', '<select ' . $this->get_link(), $output );
+	/**
+	 * Replace WP default dropdown
+	 *
+	 * @since   11/14/2012
+	 * @return  String $output
+	 */
+	public function wp_dropdown_cats( $output ) {
+		$output = str_replace( '<select', '<select ' . $this->get_link(), $output );
 
-        return $output;
-    }
+		return $output;
+	}
 }
 ?>

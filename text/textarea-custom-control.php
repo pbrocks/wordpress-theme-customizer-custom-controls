@@ -1,14 +1,14 @@
 <?php
 /**
  * Customize for textarea, extend the WP customizer
- *
  */
 
-if ( ! class_exists( 'WP_Customize_Control' ) )
-	return NULL;
+if ( ! class_exists( 'WP_Customize_Control' ) ) {
+	return null;
+}
 
-class Textarea_Custom_Control extends WP_Customize_Control
-{
+class Textarea_Custom_Control extends WP_Customize_Control {
+
 	/**
 	 * Render the control's content.
 	 *
