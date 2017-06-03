@@ -12,18 +12,19 @@ class Layout_Picker_Custom_Control extends WP_Customize_Control {
 	   * Render the content on the theme customizer page
 	   */
 	public function render_content() {
-		$image_directory = '/wordpress-theme-customizer-custom-controls/layout/img/';
-		$image_directory_inc = '/inc/wordpress-theme-customizer-custom-controls/layout/img/';
+		$image_directory = '/customizer-controls/layout/img/';
+		$image_directory_inc = '/inc/customizer-controls/layout/img/';
 
 		$final_image_directory = '';
 
-		if ( is_dir( get_stylesheet_directory() . $image_directory ) ) {
-			$final_image_directory = get_stylesheet_directory_uri() . $image_directory;
-		}
-
-		if ( is_dir( get_stylesheet_directory() . $image_directory_inc ) ) {
-			$final_image_directory = get_stylesheet_directory_uri() . $image_directory_inc;
-		}
+		// if ( is_dir( get_stylesheet_directory() . $image_directory ) ) {
+			// $final_image_directory = plugin_dir_url( __FILE__ ) . $image_directory;
+			$final_image_directory = plugin_dir_url( $image_directory );
+		// }
+		// if ( is_dir( get_stylesheet_directory() . $image_directory_inc ) ) {
+			// $final_image_directory = plugin_dir_url( __FILE__ ). $image_directory_inc;
+			$final_image_directory = plugin_dir_url( $image_directory_inc );
+		// }
 		?>
 			<label>
 			  <span class="customize-layout-control"><?php echo esc_html( $this->label ); ?></span>
