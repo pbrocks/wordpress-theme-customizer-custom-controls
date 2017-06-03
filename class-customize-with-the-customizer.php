@@ -14,7 +14,7 @@ class Customize_with_the_Customizer {
 	 * @return void
 	 */
 	public function customizer_admin() {
-		add_theme_page( 'Customize', 'Customize', 'edit_theme_options', 'customize.php' );
+		add_theme_page( 'Customizing Customizer', 'Customizing Customizer', 'edit_theme_options', 'customize.php' );
 	}
 
 	/**
@@ -36,9 +36,10 @@ class Customize_with_the_Customizer {
 	 * @return Void
 	 */
 	private function demo_section( $wp_manager ) {
-		$wp_manager->add_section( 'customiser_demo_section', array(
-			'title'          => 'Default Demo Controls',
+		$wp_manager->add_section( 'default_customizer_section', array(
+			'title'          => 'Default Customizer Controls',
 			'priority'       => 35,
+			'panel' => 'core_connect_panel',
 		) );
 
 	    // Textbox control
@@ -48,7 +49,7 @@ class Customize_with_the_Customizer {
 
 		$wp_manager->add_control( 'textbox_setting', array(
 			'label'   => 'Text Setting',
-			'section' => 'customiser_demo_section',
+			'section' => 'default_customizer_section',
 			'type'    => 'text',
 			'priority' => 1,
 		) );
@@ -60,7 +61,7 @@ class Customize_with_the_Customizer {
 
 		$wp_manager->add_control( 'checkbox_setting', array(
 			'label'   => 'Checkbox Setting',
-			'section' => 'customiser_demo_section',
+			'section' => 'default_customizer_section',
 			'type'    => 'checkbox',
 			'priority' => 2,
 		) );
@@ -72,7 +73,7 @@ class Customize_with_the_Customizer {
 
 		$wp_manager->add_control( 'radio_setting', array(
 			'label'   => 'Radio Setting',
-			'section' => 'customiser_demo_section',
+			'section' => 'default_customizer_section',
 			'type'    => 'radio',
 			'choices' => array( '1', '2', '3', '4', '5' ),
 			'priority' => 3,
@@ -85,7 +86,7 @@ class Customize_with_the_Customizer {
 
 		$wp_manager->add_control( 'select_setting', array(
 			'label'   => 'Select Dropdown Setting',
-			'section' => 'customiser_demo_section',
+			'section' => 'default_customizer_section',
 			'type'    => 'select',
 			'choices' => array( '1', '2', '3', '4', '5' ),
 			'priority' => 4,
@@ -98,7 +99,7 @@ class Customize_with_the_Customizer {
 
 		$wp_manager->add_control( 'dropdown_pages_setting', array(
 			'label'   => 'Dropdown Pages Setting',
-			'section' => 'customiser_demo_section',
+			'section' => 'default_customizer_section',
 			'type'    => 'dropdown-pages',
 			'priority' => 5,
 		) );
@@ -110,7 +111,7 @@ class Customize_with_the_Customizer {
 
 		$wp_manager->add_control( new WP_Customize_Color_Control( $wp_manager, 'color_setting', array(
 			'label'   => 'Color Setting',
-			'section' => 'customiser_demo_section',
+			'section' => 'default_customizer_section',
 			'settings'   => 'color_setting',
 			'priority' => 6,
 		) ) );
@@ -122,7 +123,7 @@ class Customize_with_the_Customizer {
 
 		$wp_manager->add_control( new WP_Customize_Upload_Control( $wp_manager, 'upload_setting', array(
 			'label'   => 'Upload Setting',
-			'section' => 'customiser_demo_section',
+			'section' => 'default_customizer_section',
 			'settings'   => 'upload_setting',
 			'priority' => 7,
 		) ) );
@@ -134,7 +135,7 @@ class Customize_with_the_Customizer {
 
 		$wp_manager->add_control( new WP_Customize_Image_Control( $wp_manager, 'image_setting', array(
 			'label'   => 'Image Setting',
-			'section' => 'customiser_demo_section',
+			'section' => 'default_customizer_section',
 			'settings'   => 'image_setting',
 			'priority' => 8,
 		) ) );
@@ -146,7 +147,7 @@ class Customize_with_the_Customizer {
 
 		$wp_manager->add_control( new WP_Customize_Image_Control( $wp_manager, 'background_image_setting', array(
 			'label'   => 'Background Image Setting',
-			'section' => 'customiser_demo_section',
+			'section' => 'default_customizer_section',
 			'settings'   => 'background_image_setting',
 			'priority' => 9,
 		) ) );
@@ -158,7 +159,7 @@ class Customize_with_the_Customizer {
 
 		$wp_manager->add_control( new WP_Customize_Background_Image_Control( $wp_manager, 'background_image_setting', array(
 			'label'   => 'Background Image Setting',
-			'section' => 'customiser_demo_section',
+			'section' => 'default_customizer_section',
 			'settings'   => 'background_image_setting',
 			'priority' => 9,
 		) ) );
@@ -172,9 +173,10 @@ class Customize_with_the_Customizer {
 	 * @return Void
 	 */
 	private function custom_sections( $wp_manager ) {
-		$wp_manager->add_section( 'customiser_demo_custom_section', array(
-			'title'          => 'Custom Controls Demo',
+		$wp_manager->add_section( 'customized_controls_section', array(
+			'title'          => 'Customized Customizer Controls',
 			'priority'       => 36,
+			'panel' => 'core_connect_panel',
 		) );
 
 	    // Add A Date Picker
@@ -184,7 +186,7 @@ class Customize_with_the_Customizer {
 		) );
 		$wp_manager->add_control( new Date_Picker_Custom_Control( $wp_manager, 'date_picker_setting', array(
 			'label'   => 'Date Picker Setting',
-			'section' => 'customiser_demo_custom_section',
+			'section' => 'customized_controls_section',
 			'settings'   => 'date_picker_setting',
 			'priority' => 1,
 		) ) );
@@ -196,7 +198,7 @@ class Customize_with_the_Customizer {
 		) );
 		$wp_manager->add_control( new Layout_Picker_Custom_Control( $wp_manager, 'layout_picker_setting', array(
 			'label'   => 'Layout Picker Setting',
-			'section' => 'customiser_demo_custom_section',
+			'section' => 'customized_controls_section',
 			'settings'   => 'layout_picker_setting',
 			'priority' => 2,
 		) ) );
@@ -208,7 +210,7 @@ class Customize_with_the_Customizer {
 		) );
 		$wp_manager->add_control( new Category_Dropdown_Custom_Control( $wp_manager, 'category_dropdown_setting', array(
 			'label'   => 'Category Dropdown Setting',
-			'section' => 'customiser_demo_custom_section',
+			'section' => 'customized_controls_section',
 			'settings'   => 'category_dropdown_setting',
 			'priority' => 3,
 		) ) );
@@ -220,7 +222,7 @@ class Customize_with_the_Customizer {
 		) );
 		$wp_manager->add_control( new Menu_Dropdown_Custom_Control( $wp_manager, 'menu_dropdown_setting', array(
 			'label'   => 'Menu Dropdown Setting',
-			'section' => 'customiser_demo_custom_section',
+			'section' => 'customized_controls_section',
 			'settings'   => 'menu_dropdown_setting',
 			'priority' => 4,
 		) ) );
@@ -232,7 +234,7 @@ class Customize_with_the_Customizer {
 		) );
 		$wp_manager->add_control( new Post_Dropdown_Custom_Control( $wp_manager, 'post_dropdown_setting', array(
 			'label'   => 'Post Dropdown Setting',
-			'section' => 'customiser_demo_custom_section',
+			'section' => 'customized_controls_section',
 			'settings'   => 'post_dropdown_setting',
 			'priority' => 5,
 		) ) );
@@ -244,7 +246,7 @@ class Customize_with_the_Customizer {
 		) );
 		$wp_manager->add_control( new Post_Type_Dropdown_Custom_Control( $wp_manager, 'post_type_dropdown_setting', array(
 			'label'   => 'Post Type Dropdown Setting',
-			'section' => 'customiser_demo_custom_section',
+			'section' => 'customized_controls_section',
 			'settings'   => 'post_type_dropdown_setting',
 			'priority' => 6,
 		) ) );
@@ -256,7 +258,7 @@ class Customize_with_the_Customizer {
 		) );
 		$wp_manager->add_control( new Tags_Dropdown_Custom_Control( $wp_manager, 'tags_dropdown_setting', array(
 			'label'   => 'Tags Dropdown Setting',
-			'section' => 'customiser_demo_custom_section',
+			'section' => 'customized_controls_section',
 			'settings'   => 'tags_dropdown_setting',
 			'priority' => 7,
 		) ) );
@@ -268,7 +270,7 @@ class Customize_with_the_Customizer {
 		) );
 		$wp_manager->add_control( new Taxonomy_Dropdown_Custom_Control( $wp_manager, 'taxonomy_dropdown_setting', array(
 			'label'   => 'Taxonomy Dropdown Setting',
-			'section' => 'customiser_demo_custom_section',
+			'section' => 'customized_controls_section',
 			'settings'   => 'taxonomy_dropdown_setting',
 			'priority' => 8,
 		) ) );
@@ -280,7 +282,7 @@ class Customize_with_the_Customizer {
 		) );
 		$wp_manager->add_control( new User_Dropdown_Custom_Control( $wp_manager, 'user_dropdown_setting', array(
 			'label'   => 'User Dropdown Setting',
-			'section' => 'customiser_demo_custom_section',
+			'section' => 'customized_controls_section',
 			'settings'   => 'user_dropdown_setting',
 			'priority' => 9,
 		) ) );
@@ -292,7 +294,7 @@ class Customize_with_the_Customizer {
 		) );
 		$wp_manager->add_control( new Textarea_Custom_Control( $wp_manager, 'textarea_text_setting', array(
 			'label'   => 'Textarea Text Setting',
-			'section' => 'customiser_demo_custom_section',
+			'section' => 'customized_controls_section',
 			'settings'   => 'textarea_text_setting',
 			'priority' => 10,
 		) ) );
@@ -304,7 +306,7 @@ class Customize_with_the_Customizer {
 		) );
 		$wp_manager->add_control( new Text_Editor_Custom_Control( $wp_manager, 'text_editor_setting', array(
 			'label'   => 'Text Editor Setting',
-			'section' => 'customiser_demo_custom_section',
+			'section' => 'customized_controls_section',
 			'settings'   => 'text_editor_setting',
 			'priority' => 11,
 		) ) );
@@ -316,7 +318,7 @@ class Customize_with_the_Customizer {
 	    // ) );
 	    // $wp_manager->add_control( new Google_Font_Dropdown_Custom_Control( $wp_manager, 'google_font_setting', array(
 	    // 'label'   => 'Google Font Setting',
-	    // 'section' => 'customiser_demo_custom_section',
+	    // 'section' => 'customized_controls_section',
 	    // 'settings'   => 'google_font_setting',
 	    // 'priority' => 12
 	    // ) ) );
